@@ -1,0 +1,35 @@
+//
+//  PrefixHeader.pch
+//  MLCalendar
+//
+//  Created by zhaoml on 2017/3/30.
+//  Copyright © 2017年 赵明亮. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+
+///屏幕宽
+#define SCREEN_WIDTH  [UIScreen mainScreen].bounds.size.width
+///屏幕高
+#define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
+
+
+#define NSLog(format, ...) do { \
+fprintf(stderr, "Log : 类名(方法名):<%s : %d> %s\n", \
+[[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String], \
+__LINE__, __func__); \
+(NSLog)((format), ##__VA_ARGS__); \
+fprintf(stderr, "\n"); \
+} while (0)
+
+#import <UIKit/UIKit.h>
+#import "MLAlertCenter.h"
+
+
+
+#endif /* PrefixHeader_pch */

@@ -7,8 +7,8 @@
 //
 
 #import "ViewController.h"
-
-@interface ViewController ()
+#import "MLCalendarView.h"
+@interface ViewController ()<MLCalendarDelegate>
 
 @end
 
@@ -16,7 +16,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    MLCalendarView *calView = [[MLCalendarView alloc]initWithFrame:CGRectMake(0, 20, SCREEN_WIDTH, SCREEN_HEIGHT-20)];
+    calView.backgroundColor = [UIColor whiteColor];
+    calView.delegate = self;
+    [self.view addSubview:calView];
+    
     // Do any additional setup after loading the view, typically from a nib.
+}
+
+- (void)selectDate:(NSDate *)date {
+    NSString *time = [[NSString stringWithFormat:@"%@",date] substringToIndex:10];
+    [[MLAlertCenter defaultCenter] postAlertWithContent:[NSString stringWithFormat:@"您选择的日期是--%@",time]];
 }
 
 
